@@ -1,0 +1,630 @@
+/* Admin Dashboard Styles for Car Rental System */
+
+:root {
+    --admin-primary: #4A6FDC;
+    --admin-secondary: #FF6B6B;
+    --admin-success: #28a745;
+    --admin-danger: #dc3545;
+    --admin-warning: #ffc107;
+    --admin-info: #17a2b8;
+    --admin-light: #f8f9fa;
+    --admin-dark: #343a40;
+    --admin-bg: #f0f2f5;
+    --admin-sidebar-width: 250px;
+    --admin-header-height: 60px;
+    --admin-text-color: #495057;
+    --admin-text-muted: #6c757d;
+    --admin-border-color: #dee2e6;
+    --admin-card-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    --admin-transition: all 0.3s ease;
+}
+
+body.admin-body {
+    background-color: var(--admin-bg);
+    color: var(--admin-text-color);
+    min-height: 100vh;
+}
+
+/* Admin Layout */
+.admin-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.admin-sidebar {
+    width: var(--admin-sidebar-width);
+    background-color: var(--admin-dark);
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+    overflow-y: auto;
+    transition: var(--admin-transition);
+}
+
+.admin-sidebar-collapsed {
+    margin-left: -200px;
+}
+
+.admin-sidebar-collapsed .admin-sidebar-link span {
+    display: none;
+}
+
+.admin-sidebar-collapsed .admin-sidebar-toggle i {
+    transform: rotate(180deg);
+}
+
+.admin-content {
+    flex: 1;
+    margin-left: var(--admin-sidebar-width);
+    transition: var(--admin-transition);
+}
+
+.admin-content-expanded {
+    margin-left: 50px;
+}
+
+.admin-header {
+    height: var(--admin-header-height);
+    background-color: white;
+    border-bottom: 1px solid var(--admin-border-color);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    position: sticky;
+    top: 0;
+    z-index: 900;
+}
+
+.admin-sidebar-header {
+    height: var(--admin-header-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.admin-logo {
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.admin-logo i {
+    margin-right: 10px;
+}
+
+.admin-sidebar-toggle {
+    color: white;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    padding: 5px;
+}
+
+.admin-sidebar-toggle i {
+    transition: var(--admin-transition);
+}
+
+/* Admin Navigation */
+.admin-nav {
+    padding: 15px 0;
+}
+
+.admin-nav-category {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    margin: 15px 0 5px;
+}
+
+.admin-nav-item {
+    margin-bottom: 2px;
+}
+
+.admin-nav-link {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    color: rgba(255, 255, 255, 0.8);
+    transition: var(--admin-transition);
+    font-weight: 500;
+}
+
+.admin-nav-link i {
+    margin-right: 10px;
+    font-size: 18px;
+    width: 20px;
+    text-align: center;
+}
+
+.admin-nav-link:hover,
+.admin-nav-link.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.admin-nav-link.active {
+    border-left: 3px solid var(--admin-primary);
+}
+
+.admin-dropdown-toggle::after {
+    content: "\f107";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    margin-left: auto;
+    transition: var(--admin-transition);
+}
+
+.admin-dropdown-toggle.collapsed::after {
+    transform: rotate(-90deg);
+}
+
+.admin-dropdown-menu {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 5px 0;
+    margin: 0;
+}
+
+.admin-dropdown-item {
+    padding-left: 50px;
+}
+
+/* Admin Header */
+.admin-header-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.admin-header-actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.admin-notification {
+    position: relative;
+    margin-right: 20px;
+}
+
+.admin-notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: var(--admin-danger);
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-user-dropdown {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.admin-user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--admin-primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.admin-user-name {
+    font-weight: 600;
+}
+
+/* Admin Dashboard Cards */
+.admin-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: var(--admin-card-shadow);
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: var(--admin-transition);
+}
+
+.admin-card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+.admin-card-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--admin-border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.admin-card-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.admin-card-action {
+    color: var(--admin-primary);
+    font-weight: 500;
+}
+
+.admin-card-body {
+    padding: 20px;
+}
+
+.admin-card-footer {
+    padding: 15px 20px;
+    border-top: 1px solid var(--admin-border-color);
+}
+
+/* Admin Stats Card */
+.admin-stats-card {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.admin-stats-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-right: 20px;
+}
+
+.admin-stats-primary .admin-stats-icon {
+    background-color: rgba(74, 111, 220, 0.2);
+    color: var(--admin-primary);
+}
+
+.admin-stats-success .admin-stats-icon {
+    background-color: rgba(40, 167, 69, 0.2);
+    color: var(--admin-success);
+}
+
+.admin-stats-warning .admin-stats-icon {
+    background-color: rgba(255, 193, 7, 0.2);
+    color: var(--admin-warning);
+}
+
+.admin-stats-danger .admin-stats-icon {
+    background-color: rgba(220, 53, 69, 0.2);
+    color: var(--admin-danger);
+}
+
+.admin-stats-info {
+    flex: 1;
+}
+
+.admin-stats-value {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.admin-stats-label {
+    color: var(--admin-text-muted);
+    margin: 0;
+}
+
+.admin-stats-trend {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.admin-stats-trend.up {
+    color: var(--admin-success);
+}
+
+.admin-stats-trend.down {
+    color: var(--admin-danger);
+}
+
+.admin-stats-trend i {
+    margin-right: 5px;
+}
+
+/* Admin Tables */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th, .admin-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--admin-border-color);
+}
+
+.admin-table th {
+    background-color: var(--admin-light);
+    font-weight: 600;
+}
+
+.admin-table tr:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.admin-table-responsive {
+    overflow-x: auto;
+}
+
+/* Admin Status Badges */
+.admin-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.admin-badge-primary {
+    background-color: rgba(74, 111, 220, 0.2);
+    color: var(--admin-primary);
+}
+
+.admin-badge-success {
+    background-color: rgba(40, 167, 69, 0.2);
+    color: var(--admin-success);
+}
+
+.admin-badge-warning {
+    background-color: rgba(255, 193, 7, 0.2);
+    color: var(--admin-warning);
+}
+
+.admin-badge-danger {
+    background-color: rgba(220, 53, 69, 0.2);
+    color: var(--admin-danger);
+}
+
+.admin-badge-info {
+    background-color: rgba(23, 162, 184, 0.2);
+    color: var(--admin-info);
+}
+
+/* Admin Forms */
+.admin-form-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: var(--admin-card-shadow);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.admin-form-title {
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.admin-form-group {
+    margin-bottom: 20px;
+}
+
+.admin-form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.admin-form-control {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid var(--admin-border-color);
+    border-radius: 5px;
+    transition: var(--admin-transition);
+}
+
+.admin-form-control:focus {
+    border-color: var(--admin-primary);
+    box-shadow: 0 0 0 0.2rem rgba(74, 111, 220, 0.25);
+}
+
+.admin-form-actions {
+    text-align: right;
+    margin-top: 30px;
+}
+
+/* Admin Buttons */
+.admin-btn {
+    padding: 8px 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--admin-transition);
+}
+
+.admin-btn-sm {
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.admin-btn-lg {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.admin-btn-primary {
+    background-color: var(--admin-primary);
+    color: white;
+}
+
+.admin-btn-primary:hover {
+    background-color: #3758b9;
+}
+
+.admin-btn-success {
+    background-color: var(--admin-success);
+    color: white;
+}
+
+.admin-btn-success:hover {
+    background-color: #218838;
+}
+
+.admin-btn-danger {
+    background-color: var(--admin-danger);
+    color: white;
+}
+
+.admin-btn-danger:hover {
+    background-color: #c82333;
+}
+
+.admin-btn-warning {
+    background-color: var(--admin-warning);
+    color: #212529;
+}
+
+.admin-btn-warning:hover {
+    background-color: #e0a800;
+}
+
+.admin-btn-info {
+    background-color: var(--admin-info);
+    color: white;
+}
+
+.admin-btn-info:hover {
+    background-color: #138496;
+}
+
+.admin-btn-outline {
+    background-color: transparent;
+    border: 1px solid var(--admin-border-color);
+}
+
+.admin-btn-outline:hover {
+    background-color: var(--admin-light);
+}
+
+.admin-btn-icon {
+    margin-right: 5px;
+}
+
+/* Admin Pagination */
+.admin-pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.admin-pagination-item {
+    margin: 0 5px;
+}
+
+.admin-pagination-link {
+    display: block;
+    padding: 8px 12px;
+    border-radius: 5px;
+    background-color: white;
+    border: 1px solid var(--admin-border-color);
+    transition: var(--admin-transition);
+}
+
+.admin-pagination-link:hover {
+    background-color: var(--admin-light);
+}
+
+.admin-pagination-link.active {
+    background-color: var(--admin-primary);
+    color: white;
+    border-color: var(--admin-primary);
+}
+
+/* Admin Modals */
+.admin-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1050;
+}
+
+.admin-modal {
+    background-color: white;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 500px;
+    animation: adminModalFadeIn 0.3s ease;
+}
+
+@keyframes adminModalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.admin-modal-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--admin-border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.admin-modal-title {
+    margin: 0;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.admin-modal-close {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.admin-modal-body {
+    padding: 20px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.admin-modal-footer {
+    padding: 15px 20px;
+    border-top: 1px solid var(--admin-border-color);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.admin-modal-btn {
+    margin-left: 10px;
+}
